@@ -1,0 +1,160 @@
+package myasterapi
+
+import "time"
+
+// 账户接口
+// aster FUTURE  FutureAccount rest账户信息 (USER_DATA)
+func (client *FutureRestClient) NewFutureAccount() *FutureAccountApi {
+	return &FutureAccountApi{
+		client: client,
+		req:    &FutureAccountReq{},
+	}
+}
+func (api *FutureAccountApi) Do() (*FutureAccountRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureAccount], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureAccountRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FuturePositionSideDualGet rest查询持仓模式 (USER_DATA)
+func (client *FutureRestClient) NewFuturePositionSideDualGet() *FuturePositionSideDualGetApi {
+	return &FuturePositionSideDualGetApi{
+		client: client,
+		req:    &FuturePositionSideDualGetReq{},
+	}
+}
+func (api *FuturePositionSideDualGetApi) Do() (*FuturePositionSideDualGetRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FuturePositionSideDualGet], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FuturePositionSideDualGetRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FutureMultiAssetsMarginGet rest查询联合保证金模式 (USER_DATA)
+func (client *FutureRestClient) NewFutureMultiAssetsMarginGet() *FutureMultiAssetsMarginGetApi {
+	return &FutureMultiAssetsMarginGetApi{
+		client: client,
+		req:    &FutureMultiAssetsMarginGetReq{},
+	}
+}
+func (api *FutureMultiAssetsMarginGetApi) Do() (*FutureMultiAssetsMarginGetRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureMultiAssetsMarginGet], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureMultiAssetsMarginGetRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FuturePositionSideDualPost rest更改持仓模式 (TRADE)
+func (client *FutureRestClient) NewFuturePositionSideDualPost() *FuturePositionSideDualPostApi {
+	return &FuturePositionSideDualPostApi{
+		client: client,
+		req:    &FuturePositionSideDualPostReq{},
+	}
+}
+func (api *FuturePositionSideDualPostApi) Do() (*FuturePositionSideDualPostRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FuturePositionSideDualPost], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FuturePositionSideDualPostRes](api.client.c, url, POST)
+}
+
+// aster FUTURE  FutureMultiAssetsMarginPost rest更改联合保证金模式 (TRADE)
+func (client *FutureRestClient) NewFutureMultiAssetsMarginPost() *FutureMultiAssetsMarginPostApi {
+	return &FutureMultiAssetsMarginPostApi{
+		client: client,
+		req:    &FutureMultiAssetsMarginPostReq{},
+	}
+}
+func (api *FutureMultiAssetsMarginPostApi) Do() (*FutureMultiAssetsMarginPostRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureMultiAssetsMarginPost], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureMultiAssetsMarginPostRes](api.client.c, url, POST)
+}
+
+// aster FUTURE  FutureLeverage rest调整开仓杠杆 (TRADE)
+func (client *FutureRestClient) NewFutureLeverage() *FutureLeverageApi {
+	return &FutureLeverageApi{
+		client: client,
+		req:    &FutureLeverageReq{},
+	}
+}
+func (api *FutureLeverageApi) Do() (*FutureLeverageRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureLeverage], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureLeverageRes](api.client.c, url, POST)
+}
+
+// aster FUTURE  FutureMarginType rest变换逐全仓模式 (TRADE)
+func (client *FutureRestClient) NewFutureMarginType() *FutureMarginTypeApi {
+	return &FutureMarginTypeApi{
+		client: client,
+		req:    &FutureMarginTypeReq{},
+	}
+}
+func (api *FutureMarginTypeApi) Do() (*FutureMarginTypeRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureMarginType], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureMarginTypeRes](api.client.c, url, POST)
+}
+
+// aster FUTURE  FutureLeverageBracket rest杠杆分层标准 (USER_DATA)
+func (client *FutureRestClient) NewFutureLeverageBracket() *FutureLeverageBracketApi {
+	return &FutureLeverageBracketApi{
+		client: client,
+		req:    &FutureLeverageBracketReq{},
+	}
+}
+func (api *FutureLeverageBracketApi) Do() (*FutureLeverageBracketRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureLeverageBracket], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureLeverageBracketRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FuturePositionRisk rest用户持仓风险V2 (USER_DATA)
+func (client *FutureRestClient) NewFuturePositionRisk() *FuturePositionRiskApi {
+	return &FuturePositionRiskApi{
+		client: client,
+		req:    &FuturePositionRiskReq{},
+	}
+}
+func (api *FuturePositionRiskApi) Do() (*FuturePositionRiskRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FuturePositionRisk], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FuturePositionRiskRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FutureIncomeAsyn rest获取合约资金流水下载Id (USER_DATA)
+func (client *FutureRestClient) NewFutureIncomeAsyn() *FutureIncomeAsynApi {
+	return &FutureIncomeAsynApi{
+		client: client,
+		req:    &FutureIncomeAsynReq{},
+	}
+}
+func (api *FutureIncomeAsynApi) Do() (*FutureIncomeAsynRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureIncomeAsyn], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureIncomeAsynRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FutureIncomeAsynId rest通过下载Id获取合约资金流水下载链接 (USER_DATA)
+func (client *FutureRestClient) NewFutureIncomeAsynId() *FutureIncomeAsynIdApi {
+	return &FutureIncomeAsynIdApi{
+		client: client,
+		req:    &FutureIncomeAsynIdReq{},
+	}
+}
+func (api *FutureIncomeAsynIdApi) Do() (*FutureIncomeAsynIdRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureIncomeAsynId], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureIncomeAsynIdRes](api.client.c, url, GET)
+}
+
+// aster FUTURE  FutureApiReferralIfNewUser rest查询返佣资格
+func (client *FutureRestClient) NewFutureApiReferralIfNewUser() *FutureApiReferralIfNewUserApi {
+	return &FutureApiReferralIfNewUserApi{
+		client: client,
+		req:    &FutureApiReferralIfNewUserReq{},
+	}
+}
+func (api *FutureApiReferralIfNewUserApi) Do() (*FutureApiReferralIfNewUserRes, error) {
+	api.Timestamp(time.Now().UnixMilli() + serverTimeDelta)
+	url := asterHandlerRequestApiWithSecret(FUTURE, api.req, FutureApiMap[FutureApiReferralIfNewUser], api.client.c.ApiSecret)
+	return asterCallApiWithSecret[FutureApiReferralIfNewUserRes](api.client.c, url, GET)
+}
