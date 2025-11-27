@@ -346,7 +346,7 @@ func asterHandlerWsApiReq[T any](req *T) string {
 			paramName = strings.ReplaceAll(paramName, ",omitempty", "")
 			switch v.Field(i).Elem().Kind() {
 			case reflect.String:
-				paramBuffer.WriteString(paramName + "=" + v.Field(i).Elem().String() + "&")
+				paramBuffer.WriteString(paramName + "=" + url.QueryEscape(v.Field(i).Elem().String()) + "&")
 			case reflect.Int, reflect.Int32, reflect.Int64:
 				paramBuffer.WriteString(paramName + "=" + strconv.FormatInt(v.Field(i).Elem().Int(), BIT_BASE_10) + "&")
 			case reflect.Float32, reflect.Float64:
@@ -358,7 +358,7 @@ func asterHandlerWsApiReq[T any](req *T) string {
 				ToStringMethod := sv.MethodByName("String")
 				params := make([]reflect.Value, 0)
 				result := ToStringMethod.Call(params)
-				paramBuffer.WriteString(paramName + "=" + result[0].String() + "&")
+				paramBuffer.WriteString(paramName + "=" + url.QueryEscape(result[0].String()) + "&")
 			case reflect.Slice:
 				s := v.Field(i).Interface()
 				d, _ := json.Marshal(s)

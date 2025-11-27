@@ -865,7 +865,7 @@ func keepAlive(c *websocket.Conn, timeout time.Duration) {
 				return
 			}
 			<-ticker.C
-			if time.Since(lastResponse) > timeout {
+			if time.Since(lastResponse) > 3*timeout {
 				err := c.Close()
 				if err != nil {
 					return
